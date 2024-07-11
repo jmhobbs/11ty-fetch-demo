@@ -1,6 +1,12 @@
+const { AssetCache } = require('@11ty/eleventy-fetch');
 const config = require('./config.json');
 
 module.exports = async function () {
+  let asset = new AssetCache(`repos_${config.username}`);
+
+  if (asset.isCacheValid('12h')) {
+    return asset.getCachedValue();
+  }
   const { Octokit } = await import('octokit');
 
   const octokit = new Octokit();
@@ -21,5 +27,8 @@ module.exports = async function () {
       repos.push(repo);
     }
   }
+
+  await asset.save(repos, 'json');
+
   return repos;
 };
