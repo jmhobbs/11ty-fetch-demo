@@ -1,7 +1,9 @@
-const fetch = require('node-fetch');
+const EleventyFetch = require('@11ty/eleventy-fetch');
 const config = require('./config.json');
 
 module.exports = async () => {
-  const response = await fetch(`https://api.github.com/users/${config.username}`);
-  return response.json();
+  return EleventyFetch(`https://api.github.com/users/${config.username}`, {
+    duration: "7d",
+    type: "json",
+  });
 }
