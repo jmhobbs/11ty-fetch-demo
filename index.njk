@@ -1,1 +1,7 @@
 <h1>@{{ user.login }}</h1>
+
+<ul>
+  {% for repo in repos %}
+  <li>{{ repo.name }}</li>
+  {% endfor %}
+</ul>

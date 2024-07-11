@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-fetch": "^4.0.1"
+    "@11ty/eleventy-fetch": "^4.0.1",
+    "octokit": "^4.0.2"
   }
 }
